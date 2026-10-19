@@ -117,4 +117,4 @@ The video walks through each one with a before/after example.
 
 ---
 
-Built while learning Power Query and Power BI, with [Claude](https://claude.ai) as a tutor.
+Built as a practice project for the transform side of Power Query, with [Claude](https://claude.ai) as a tutor.
