@@ -1,0 +1,61 @@
+table Products
+	lineageTag: fa875140-6505-4ab3-88d1-c5cb199e9239
+
+	column SKU
+		dataType: string
+		lineageTag: dfb87f6d-e0f9-492a-b756-c836b1a42483
+		summarizeBy: none
+		sourceColumn: SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: 6077a7be-8a62-4ff2-94fe-923ce205fbf2
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Category ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 32b9cf10-9d2a-4738-90c4-ad3e13595edd
+		summarizeBy: none
+		sourceColumn: Category ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Price'
+		dataType: double
+		lineageTag: 4d23e08f-80b6-4a74-8700-19313ce3b75e
+		summarizeBy: none
+		sourceColumn: Unit Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Category
+		dataType: string
+		lineageTag: 95dc1422-3a63-426f-94d6-b4d112d93bba
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Products = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents(DataFolder & "\products.xlsx"), null, true),
+				  #"Navigation 1" = Source{[Item = "Products", Kind = "Sheet"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"SKU", type text}, {"Product", type text}, {"Category ID", Int64.Type}, {"Unit Price", type number}}, "en-US"),
+				  #"Merged queries" = Table.NestedJoin(#"Changed column type", {"Category ID"}, Categories, {"Category ID"}, "Categories", JoinKind.LeftOuter),
+				  #"Expanded Categories" = Table.ExpandTableColumn(#"Merged queries", "Categories", {"Category"}, {"Category"})
+				in
+				  #"Expanded Categories"
+
+	annotation PBI_ResultType = Table
+

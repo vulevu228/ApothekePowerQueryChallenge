@@ -1,0 +1,28 @@
+ANSWER KEY - PowerQuery-Challenge-2   (only open to CHECK your results)
+
+orders_2026_04.csv: 140 data rows in file (incl. 6 re-sent duplicates) -> 134 unique orders
+orders_2026_05.csv: 132 data rows in file (incl. 6 re-sent duplicates) -> 126 unique orders
+orders_2026_06.csv: 141 data rows in file (incl. 6 re-sent duplicates) -> 135 unique orders
+All months: 395 unique orders, 38 cancelled -> 357 valid (Delivered+Shipped)
+Total net revenue (valid orders): 7176.15
+Total gross revenue (valid): 7440.37   total discount (valid): 264.22
+
+TABLE 1 - Store Performance (Store x Month), valid orders only
+Store       Month  Orders    Net EUR  Target  Achiev.
+Altona      Apr        40     827.46    1100    75.2%  Below target
+Altona      May        38     643.86     800    80.5%  Below target
+Altona      Jun        50    1001.95     600   167.0%  On target
+Eimsbüttel  Apr        47    1109.62     900   123.3%  On target
+Eimsbüttel  May        34     705.74     900    78.4%  Below target
+Eimsbüttel  Jun        36     610.04     800    76.3%  Below target
+Wandsbek    Apr        35     548.83    1100    49.9%  Below target
+Wandsbek    May        40     903.50     600   150.6%  On target
+Wandsbek    Jun        37     825.15    1000    82.5%  Below target
+
+TABLE 2 - Net revenue by Category (all stores, Q2), valid orders only
+Pain Relief      79 orders      945.43
+Cold & Flu       99 orders     1805.51
+Skin Care        75 orders     1959.63
+Vitamins        104 orders     2465.58
+
+Distinct values after cleaning: Store 3, Status 3 (Delivered/Shipped/Cancelled), Product SKU 10

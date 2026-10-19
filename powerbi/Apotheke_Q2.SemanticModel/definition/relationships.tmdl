@@ -1,0 +1,25 @@
+relationship ffcb018e-3fe0-460b-93b2-f1d6f4e18d15
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date.Date
+	toColumn: LocalDateTable_7eea275c-c15d-4265-965c-baabcf61b742.Date
+
+relationship d286d113-f13d-b692-93d1-55a9b117e0a6
+	fromColumn: Orders.'Order Date'
+	toColumn: Date.Date
+
+relationship 7a83e31a-e868-ace5-b623-659ac29beabf
+	fromColumn: Orders.Store
+	toColumn: Stores.Store
+
+relationship 7ba19090-a6ff-4ce8-591d-6d1dbb4b2d02
+	fromColumn: Targets.'Month Start'
+	toColumn: Date.Date
+
+relationship 749f684c-9ebf-21b4-d5dd-148b67b3db0c
+	fromColumn: Targets.Store
+	toColumn: Stores.Store
+
+relationship 456c8113-e366-2100-da24-ebe3195a9323
+	fromColumn: Orders.'Product SKU'
+	toColumn: Products.SKU
+

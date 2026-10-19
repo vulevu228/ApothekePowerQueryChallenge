@@ -1,0 +1,171 @@
+expression DataFolder = "C:\Users\emira\Projects\GitHub-Projects\ApothekePowerQueryChallenge\data\challenge" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: b7efb463-ffe8-5ccc-90ec-1711763f143b
+
+	annotation PBI_ResultType = Text
+
+expression Parameter =
+		let
+		  Parameter = #"Sample file" meta [IsParameterQuery = true, IsParameterQueryRequired = false, Type = type binary, BinaryIdentifier = #"Sample file"]
+		in
+		  Parameter
+	lineageTag: 9ba2ce34-bc3c-4ebb-962f-52c83705490d
+	queryGroup: 'Transform file from orders\Helper queries'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Sample file' =
+		let
+		  Source = Folder.Files(DataFolder & "\orders"),
+		  #"Filtered hidden files" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+		  Navigation = #"Filtered hidden files"{[#"Folder Path" = DataFolder & "\orders\", Name = "orders_2026_04.csv"]}[Content]
+		in
+		  Navigation
+	lineageTag: 475e99f5-888a-44af-a40e-001fd404845f
+	queryGroup: 'Transform file from orders\Helper queries'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample file' =
+		let
+		  Source = Csv.Document(Parameter, [Delimiter = ",", Columns = 9, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+		  #"Removed top rows" = Table.Skip(Source, 2),
+		  #"Promoted headers" = Table.PromoteHeaders(#"Removed top rows", [PromoteAllScalars = true]),
+		  #"Trimmed text" = Table.TransformColumns(#"Promoted headers", {{"Product SKU", each Text.Trim(_), type nullable text}}),
+		  #"Trimmed text 1" = Table.TransformColumns(#"Trimmed text", {{"Status", each Text.Trim(_), type nullable text}}),
+		  #"Trimmed text 2" = Table.TransformColumns(#"Trimmed text 1", {{"Customer", each Text.Trim(_), type nullable text}}),
+		  #"Capitalized each word" = Table.TransformColumns(#"Trimmed text 2", {{"Status", each Text.Proper(_), type nullable text}}),
+		  #"Uppercased text" = Table.TransformColumns(#"Capitalized each word", {{"Product SKU", each Text.Upper(_), type nullable text}}),
+		  #"Changed column type" = Table.TransformColumnTypes(#"Uppercased text", {{"Store", type text}, {"Order ID", Int64.Type}, {"Order Timestamp", type datetime}, {"Customer", type text}, {"Qty", Int64.Type}, {"Gross Amount", type text}, {"Status", type text}}, "en-US"),
+		  #"Changed column type with locale" = Table.TransformColumnTypes(#"Changed column type", {{"Gross Amount", Currency.Type}}, "de-DE"),
+		  #"Changed column type with locale 1" = Table.TransformColumnTypes(#"Changed column type with locale", {{"Discount", type number}}, "de-DE"),
+		  #"Replaced value" = Table.ReplaceValue(#"Changed column type with locale 1", "", null, Replacer.ReplaceValue, {"Store"}),
+		  #"Replaced value 1" = Table.ReplaceValue(#"Replaced value", "Canceled", "Cancelled", Replacer.ReplaceText, {"Status"}),
+		  #"Replaced value 2" = Table.ReplaceValue(#"Replaced value 1", null, 0, Replacer.ReplaceValue, {"Discount"}),
+		  #"Filled down" = Table.FillDown(#"Replaced value 2", {"Store"}),
+		  #"Filtered rows" = Table.SelectRows(#"Filled down", each [Order ID] <> null),
+		  #"Removed duplicates" = Table.Distinct(#"Filtered rows", {"Order ID"}),
+		  #"Split column by delimiter" = Table.SplitColumn(#"Removed duplicates", "Customer", Splitter.SplitTextByDelimiter(", "), {"Customer.1", "Customer.2"}),
+		  #"Renamed columns" = Table.RenameColumns(#"Split column by delimiter", {{"Customer.1", "Customer Last Name"}, {"Customer.2", "Customer First Name"}}),
+		  #"Changed column type 1" = Table.TransformColumnTypes(#"Renamed columns", {{"Order Timestamp", type date}}),
+		  #"Renamed to Order Date" = Table.RenameColumns(#"Changed column type 1", {{"Order Timestamp", "Order Date"}}),
+		  #"Inserted month" = Table.AddColumn(#"Renamed to Order Date", "Month", each Date.ToText([Order Date], "MMM", "en-US"), type text),
+		  #"Added custom" = Table.AddColumn(#"Inserted month", "Net Revenue", each [Gross Amount] - [Discount]),
+		  #"Changed column type 2" = Table.TransformColumnTypes(#"Added custom", {{"Net Revenue", Currency.Type}})
+		in
+		  #"Changed column type 2"
+	lineageTag: bdb5fc61-771b-4666-8261-b1617b979061
+	queryGroup: 'Transform file from orders'
+
+	annotation PBI_ResultType = Table
+
+expression 'Transform file' =
+		let
+		    Source = (Parameter as binary) => let
+		  Source = Csv.Document(Parameter, [Delimiter = ",", Columns = 9, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+		  #"Removed top rows" = Table.Skip(Source, 2),
+		  #"Promoted headers" = Table.PromoteHeaders(#"Removed top rows", [PromoteAllScalars = true]),
+		  #"Trimmed text" = Table.TransformColumns(#"Promoted headers", {{"Product SKU", each Text.Trim(_), type nullable text}}),
+		  #"Trimmed text 1" = Table.TransformColumns(#"Trimmed text", {{"Status", each Text.Trim(_), type nullable text}}),
+		  #"Trimmed text 2" = Table.TransformColumns(#"Trimmed text 1", {{"Customer", each Text.Trim(_), type nullable text}}),
+		  #"Capitalized each word" = Table.TransformColumns(#"Trimmed text 2", {{"Status", each Text.Proper(_), type nullable text}}),
+		  #"Uppercased text" = Table.TransformColumns(#"Capitalized each word", {{"Product SKU", each Text.Upper(_), type nullable text}}),
+		  #"Changed column type" = Table.TransformColumnTypes(#"Uppercased text", {{"Store", type text}, {"Order ID", Int64.Type}, {"Order Timestamp", type datetime}, {"Customer", type text}, {"Qty", Int64.Type}, {"Gross Amount", type text}, {"Status", type text}}, "en-US"),
+		  #"Changed column type with locale" = Table.TransformColumnTypes(#"Changed column type", {{"Gross Amount", Currency.Type}}, "de-DE"),
+		  #"Changed column type with locale 1" = Table.TransformColumnTypes(#"Changed column type with locale", {{"Discount", type number}}, "de-DE"),
+		  #"Replaced value" = Table.ReplaceValue(#"Changed column type with locale 1", "", null, Replacer.ReplaceValue, {"Store"}),
+		  #"Replaced value 1" = Table.ReplaceValue(#"Replaced value", "Canceled", "Cancelled", Replacer.ReplaceText, {"Status"}),
+		  #"Replaced value 2" = Table.ReplaceValue(#"Replaced value 1", null, 0, Replacer.ReplaceValue, {"Discount"}),
+		  #"Filled down" = Table.FillDown(#"Replaced value 2", {"Store"}),
+		  #"Filtered rows" = Table.SelectRows(#"Filled down", each [Order ID] <> null),
+		  #"Removed duplicates" = Table.Distinct(#"Filtered rows", {"Order ID"}),
+		  #"Split column by delimiter" = Table.SplitColumn(#"Removed duplicates", "Customer", Splitter.SplitTextByDelimiter(", "), {"Customer.1", "Customer.2"}),
+		  #"Renamed columns" = Table.RenameColumns(#"Split column by delimiter", {{"Customer.1", "Customer Last Name"}, {"Customer.2", "Customer First Name"}}),
+		  #"Changed column type 1" = Table.TransformColumnTypes(#"Renamed columns", {{"Order Timestamp", type date}}),
+		  #"Renamed to Order Date" = Table.RenameColumns(#"Changed column type 1", {{"Order Timestamp", "Order Date"}}),
+		  #"Inserted month" = Table.AddColumn(#"Renamed to Order Date", "Month", each Date.ToText([Order Date], "MMM", "en-US"), type text),
+		  #"Added custom" = Table.AddColumn(#"Inserted month", "Net Revenue", each [Gross Amount] - [Discount]),
+		  #"Changed column type 2" = Table.TransformColumnTypes(#"Added custom", {{"Net Revenue", Currency.Type}})
+		in
+		  #"Changed column type 2"
+		in
+		    Source
+	lineageTag: b3cbd635-a5fe-4982-8b01-d27461f71354
+	queryGroup: 'Transform file from orders\Helper queries'
+
+	annotation PBI_ResultType = Function
+
+expression 'Store Performance' =
+		let
+		  Source = Orders,
+		  #"Filtered rows" = Table.SelectRows(Source, each ([Status] <> "Cancelled")),
+		  #"Grouped rows" = Table.Group(#"Filtered rows", {"Store", "Month"}, {{"Orders", each Table.RowCount(_), Int64.Type}, {"Net Revenue", each List.Sum([Net Revenue]), type nullable number}}),
+		  #"Merged queries" = Table.NestedJoin(#"Grouped rows", {"Store", "Month"}, Targets, {"Store", "Month"}, "Targets", JoinKind.LeftOuter),
+		  #"Expanded Targets" = Table.ExpandTableColumn(#"Merged queries", "Targets", {"Target EUR"}, {"Target EUR"}),
+		  #"Added custom" = Table.AddColumn(#"Expanded Targets", "Variance EUR", each [Net Revenue] - [Target EUR]),
+		  #"Added custom 1" = Table.TransformColumnTypes(Table.AddColumn(#"Added custom", "Achievement %", each [Net Revenue] / [Target EUR]), {{"Achievement %", Percentage.Type}}),
+		  #"Inserted conditional column" = Table.AddColumn(#"Added custom 1", "Status", each if [Net Revenue] >= [Target EUR] then """On Target""" else """Below Target"""),
+		  #"Removed columns" = Table.RemoveColumns(#"Inserted conditional column", {"Status"}),
+		  #"Inserted conditional column 1" = Table.AddColumn(#"Removed columns", "Status", each if [Net Revenue] >= [Target EUR] then "On target" else "Below target"),
+		  #"Changed column type" = Table.TransformColumnTypes(#"Inserted conditional column 1", {{"Target EUR", type number}, {"Orders", Int64.Type}, {"Variance EUR", type number}}),
+		  #"Sorted rows" = Table.Sort(#"Changed column type", {{"Status", Order.Ascending}})
+		in
+		  #"Sorted rows"
+	lineageTag: 98c88b3a-1ea6-47b1-91e0-03862f7ad7a3
+
+	annotation PBI_ResultType = Table
+
+expression 'Category Summary' =
+		let
+		  Source = Orders,
+		  #"Filtered rows" = Table.SelectRows(Source, each ([Status] <> "Cancelled")),
+		  #"Grouped rows" = Table.Group(#"Filtered rows", {"Category"}, {{"Orders", each Table.RowCount(_), Int64.Type}, {"Net Revenue", each List.Sum([Net Revenue]), type nullable number}}),
+		  #"Sorted rows" = Table.Sort(#"Grouped rows", {{"Net Revenue", Order.Descending}})
+		in
+		  #"Sorted rows"
+	lineageTag: 53863d61-da22-43f1-ad03-1048a8288e23
+
+	annotation PBI_ResultType = Table
+
+expression orders_2026_04 =
+		let
+		  Source = Csv.Document(File.Contents(DataFolder & "\orders\orders_2026_04.csv"), [Delimiter = ",", Columns = 9, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+		  #"Removed top rows" = Table.Skip(Source, 2),
+		  #"Promoted headers" = Table.PromoteHeaders(#"Removed top rows", [PromoteAllScalars = true]),
+		  #"Trimmed text" = Table.TransformColumns(#"Promoted headers", {{"Product SKU", each Text.Trim(_), type nullable text}}),
+		  #"Trimmed text 1" = Table.TransformColumns(#"Trimmed text", {{"Status", each Text.Trim(_), type nullable text}}),
+		  #"Trimmed text 2" = Table.TransformColumns(#"Trimmed text 1", {{"Customer", each Text.Trim(_), type nullable text}}),
+		  #"Capitalized each word" = Table.TransformColumns(#"Trimmed text 2", {{"Status", each Text.Proper(_), type nullable text}}),
+		  #"Uppercased text" = Table.TransformColumns(#"Capitalized each word", {{"Product SKU", each Text.Upper(_), type nullable text}}),
+		  #"Changed column type" = Table.TransformColumnTypes(#"Uppercased text", {{"Store", type text}, {"Order ID", Int64.Type}, {"Order Timestamp", type datetime}, {"Customer", type text}, {"Qty", Int64.Type}, {"Gross Amount", type text}, {"Status", type text}}, "en-US"),
+		  #"Changed column type with locale" = Table.TransformColumnTypes(#"Changed column type", {{"Gross Amount", Currency.Type}}, "de-DE"),
+		  #"Changed column type with locale 1" = Table.TransformColumnTypes(#"Changed column type with locale", {{"Discount", type number}}, "de-DE"),
+		  #"Replaced value" = Table.ReplaceValue(#"Changed column type with locale 1", "", null, Replacer.ReplaceValue, {"Store"}),
+		  #"Replaced value 1" = Table.ReplaceValue(#"Replaced value", "Canceled", "Cancelled", Replacer.ReplaceText, {"Status"}),
+		  #"Replaced value 2" = Table.ReplaceValue(#"Replaced value 1", null, 0, Replacer.ReplaceValue, {"Discount"}),
+		  #"Filled down" = Table.FillDown(#"Replaced value 2", {"Store"}),
+		  #"Filtered rows" = Table.SelectRows(#"Filled down", each [Order ID] <> null and [Order ID] <> ""),
+		  #"Removed duplicates" = Table.Distinct(#"Filtered rows", {"Order ID"}),
+		  #"Split column by delimiter" = Table.SplitColumn(#"Removed duplicates", "Customer", Splitter.SplitTextByDelimiter(","), {"Customer.1", "Customer.2"}),
+		  #"Renamed columns" = Table.RenameColumns(#"Split column by delimiter", {{"Customer.1", "Last Name"}, {"Customer.2", "First Name"}}),
+		  #"Changed column type 1" = Table.TransformColumnTypes(#"Renamed columns", {{"Order Timestamp", type date}}),
+		  #"Inserted month name" = Table.AddColumn(#"Changed column type 1", "Month name", each Date.MonthName([Order Timestamp]), type nullable text),
+		  #"Added custom" = Table.AddColumn(#"Inserted month name", "Net Revenue", each [Gross Amount] - [Discount]),
+		  #"Changed column type 2" = Table.TransformColumnTypes(#"Added custom", {{"Net Revenue", Currency.Type}})
+		in
+		  #"Changed column type 2"
+	lineageTag: 3ca2fb62-1833-44f7-a5cd-b56fa9d11dcb
+
+	annotation PBI_ResultType = Table
+
+expression Categories =
+		let
+		  Source = Excel.Workbook(File.Contents(DataFolder & "\products.xlsx"), null, true),
+		  #"Navigation 1" = Source{[Item = "Categories", Kind = "Sheet"]}[Data],
+		  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+		  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"Category ID", Int64.Type}, {"Category", type text}}, "en-US")
+		in
+		  #"Changed column type"
+	lineageTag: d1c6c674-8afe-41d0-bc81-c91e774538d4
+
+	annotation PBI_ResultType = Table
+

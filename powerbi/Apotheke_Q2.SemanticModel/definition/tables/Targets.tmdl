@@ -1,0 +1,70 @@
+table Targets
+	lineageTag: 90d89e40-dbde-406f-ad0e-69248bb695c7
+
+	column Store
+		dataType: string
+		isHidden
+		lineageTag: 8dd85212-12ac-4b07-a917-e4c319136d3f
+		summarizeBy: none
+		sourceColumn: Store
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		isHidden
+		lineageTag: db6fdfc4-64e7-4a7e-900c-f594a0ba8c6c
+		summarizeBy: none
+		sourceColumn: Month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target EUR'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0fc35238-5695-420e-a49c-4050b942a3f0
+		summarizeBy: sum
+		sourceColumn: Target EUR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Start'
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: b5f98a56-8a64-4885-ab3e-efefb98d64b9
+		summarizeBy: none
+		sourceColumn: Month Start
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Targets = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents(DataFolder & "\targets.xlsx"), null, true),
+				  #"Navigation 1" = Source{[Item = "Targets 2026", Kind = "Sheet"]}[Data],
+				  #"Changed column type" = Table.TransformColumnTypes(#"Navigation 1", {{"Column1", type text}}, "en-US"),
+				  #"Removed top rows" = Table.Skip(#"Changed column type", 2),
+				  #"Promoted headers" = Table.PromoteHeaders(#"Removed top rows", [PromoteAllScalars = true]),
+				  #"Changed column type 1" = Table.TransformColumnTypes(#"Promoted headers", {{"Apr", Int64.Type}, {"May", Int64.Type}, {"Jun", Int64.Type}}, "en-US"),
+				  #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Changed column type 1", {"Store"}, "Attribute", "Value"),
+				  #"Renamed columns" = Table.RenameColumns(#"Unpivoted other columns", {{"Attribute", "Month"}, {"Value", "Target EUR"}}),
+				  #"Added custom" = Table.TransformColumnTypes(Table.AddColumn(#"Renamed columns", "Date", each Date.FromText("01-" & [Month] & "-2026", [Format = "dd-MMM-yyyy", Culture = "en-US"])), {{"Date", type date}}),
+				  #"Renamed columns 1" = Table.RenameColumns(#"Added custom", {{"Date", "Month Start"}})
+				in
+				  #"Renamed columns 1"
+
+	annotation PBI_ResultType = Table
+

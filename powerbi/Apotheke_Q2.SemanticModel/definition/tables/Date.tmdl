@@ -1,0 +1,47 @@
+table Date
+	lineageTag: eab22300-f616-4ea2-be09-852d434c66b5
+
+	column Date
+		formatString: General Date
+		lineageTag: 3c075045-2a85-4676-9682-e4e30246e51a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: ffcb018e-3fe0-460b-93b2-f1d6f4e18d15
+			defaultHierarchy: LocalDateTable_7eea275c-c15d-4265-965c-baabcf61b742.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: e0699611-e1e1-4458-a07a-60b085b07be7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+		sortByColumn: 'Month No'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month No'
+		formatString: 0
+		lineageTag: 135c3d70-f9ed-4297-b2fc-355f075113f9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month No]
+
+		annotation SummarizationSetBy = User
+
+	partition Date = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS (
+				    CALENDAR ( DATE ( 2026, 4, 1 ), DATE ( 2026, 6, 30 ) ),
+				    "Month", FORMAT ( [Date], "MMM", "en-US" ),
+				    "Month No", MONTH ( [Date] )
+				)
+
+	annotation PBI_Id = 1cbf7a0f553444bc859b73d715e45868
+

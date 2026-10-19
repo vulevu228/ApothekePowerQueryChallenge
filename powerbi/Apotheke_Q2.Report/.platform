@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Apotheke_Q2"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d8e88400-0de1-44bf-beb0-bf208e69057d"
+  }
+}

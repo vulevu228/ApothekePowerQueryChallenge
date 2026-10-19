@@ -1,0 +1,189 @@
+table Orders
+	lineageTag: 9a23719b-4db2-4118-8c52-89879a5f23cb
+
+	measure 'Total Net Revenue' = SUM ( Orders[Net Revenue])
+		formatString: #,0.00\ "€";-#,0.00\ "€";#,0.00\ "€"
+		lineageTag: f2a5a3c3-0552-4736-8593-b44db976c658
+
+	measure 'Valid Net Revenue' = CALCULATE( [Total Net Revenue], Orders[Status] IN {"Delivered", "Shipped"})
+		formatString: #,0.00\ "€";-#,0.00\ "€";#,0.00\ "€"
+		lineageTag: 2e59d49e-6457-4e1a-8218-0d6276629f54
+
+	measure 'Valid Orders' = CALCULATE(COUNTROWS (Orders), Orders[Status] IN {"Delivered", "Shipped"})
+		formatString: 0
+		lineageTag: b205b70e-1a06-46f0-b858-1a0a1fc78de8
+
+	measure 'Total Target' = SUM(Targets[Target EUR])
+		formatString: #,0\ "€";-#,0\ "€";#,0\ "€"
+		lineageTag: 52a092d5-1298-43db-805a-e27019538371
+
+	measure 'Achievement %' = DIVIDE([Valid Net Revenue], [Total Target])
+		formatString: #,0.00%;-#,0.00%;#,0.00%
+		lineageTag: 5dd67a35-98ae-41b2-a971-d4900a2000e1
+
+	measure 'Gap to Target' = [Valid Net Revenue] - [Total Target]
+		formatString: +#,0.00\ "€";-#,0.00\ "€";#,0.00\ "€"
+		lineageTag: df9bcbd6-7a1e-4c2b-9d3f-6e5a4b3c2d1e
+
+	measure 'Achievement Color' = IF ( [Achievement %] >= 1, "#1F8A70", "#D9822B" )
+		lineageTag: 6ac70acf-3b2c-4d1e-8f7a-1c2d3e4f5a6b
+
+	column 'Source.Name'
+		dataType: string
+		isHidden
+		lineageTag: 4f893433-b62c-4ae9-a681-a56881b506d9
+		summarizeBy: none
+		sourceColumn: Source.Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Store
+		dataType: string
+		isHidden
+		lineageTag: 72be446c-ca3a-4ce0-af67-f450d2df8d86
+		summarizeBy: none
+		sourceColumn: Store
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: cfce41e2-8c80-438f-9065-2b692170c505
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = User
+
+	column 'Order Date'
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 6b8febf1-3a62-4bff-b1e3-15aee4b5ebbe
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Customer Last Name'
+		dataType: string
+		lineageTag: a456a616-6a9b-4f54-834c-67d65358cb10
+		summarizeBy: none
+		sourceColumn: Customer Last Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer First Name'
+		dataType: string
+		lineageTag: c314abfa-003d-41a2-b3b8-35d2cf60727d
+		summarizeBy: none
+		sourceColumn: Customer First Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product SKU'
+		dataType: string
+		isHidden
+		lineageTag: 71aa141e-e1ff-4a60-b90f-bcedd5f84e7e
+		summarizeBy: none
+		sourceColumn: Product SKU
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qty
+		dataType: int64
+		formatString: 0
+		lineageTag: 2944039b-3857-4892-a023-92be2ff7e672
+		summarizeBy: sum
+		sourceColumn: Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gross Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00\ "€";-#,0.00\ "€";#,0.00\ "€"
+		lineageTag: 6644de25-5d35-40eb-8a69-0241939a80b6
+		summarizeBy: sum
+		sourceColumn: Gross Amount
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Discount
+		dataType: decimal
+		isHidden
+		formatString: #,0.00\ "€";-#,0.00\ "€";#,0.00\ "€"
+		lineageTag: 97d57ab7-d860-47e1-9683-9b43f1e18a1a
+		summarizeBy: sum
+		sourceColumn: Discount
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 6fa68ddf-947d-406a-bd6f-1271851439dd
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		isHidden
+		lineageTag: 9bfad1df-5d52-41a1-9916-eaa5ba270134
+		summarizeBy: none
+		sourceColumn: Month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Net Revenue'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00\ "€";-#,0.00\ "€";#,0.00\ "€"
+		lineageTag: 5cc3b036-e0da-470a-b735-ec9503066ea2
+		summarizeBy: sum
+		sourceColumn: Net Revenue
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				  Source = Folder.Files(DataFolder & "\orders"),
+				  #"Filtered hidden files" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+				  #"Added custom" = let
+				    rootPath = Text.TrimEnd(Value.Metadata(Value.Type(#"Filtered hidden files"))[FileSystemTable.RootPath]?, "\"),
+				    combinePaths = (path1, path2) => Text.Combine({Text.TrimEnd(path1, "\"), path2}, "\"),
+				    getRelativePath = (path, relativeTo) => Text.Middle(path, Text.Length(relativeTo) + 1)
+				in
+				    Table.AddColumn(#"Filtered hidden files", "Relative Path", each getRelativePath(combinePaths([Folder Path], [Name]), rootPath), type text),
+				  #"Invoke custom function" = Table.AddColumn(#"Added custom", "Transform file", each #"Transform file"([Content])),
+				  #"Renamed columns" = Table.RenameColumns(#"Invoke custom function", {{"Relative Path", "Source.Name"}}),
+				  #"Removed other columns" = Table.SelectColumns(#"Renamed columns", {"Source.Name", "Transform file"}),
+				  #"Expanded table column" = Table.ExpandTableColumn(#"Removed other columns", "Transform file", Table.ColumnNames(#"Transform file"(#"Sample file"))),
+				  #"Changed column type with locale" = Table.TransformColumnTypes(#"Expanded table column", {{"Order Date", type date}, {"Qty", type number}, {"Gross Amount", type number}}, "de-DE"),
+				  #"Changed column type with locale 1" = Table.TransformColumnTypes(#"Changed column type with locale", {{"Gross Amount", Currency.Type}, {"Discount", Currency.Type}, {"Net Revenue", Currency.Type}, {"Order ID", Int64.Type}, {"Qty", Int64.Type}}, "de-DE")
+				in
+				  #"Changed column type with locale 1"
+
+	annotation PBI_ResultType = Table
+

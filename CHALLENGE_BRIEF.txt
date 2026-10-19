@@ -1,0 +1,110 @@
+POWER QUERY CHALLENGE 2 - "Apotheke am Hafen"   (solo run)
+Tool: Excel Power Query (or Power BI Desktop, same steps)
+
+=====================================================================================
+THE SCENARIO
+=====================================================================================
+A Hamburg pharmacy chain with 3 stores (Altona, Eimsbüttel, Wandsbek) sells online.
+Every month the shop system exports one CSV of orders. Regional management set a
+monthly NET revenue target per store. Your manager asks:
+
+  1. "Which stores hit their monthly target in Q2 2026 (April-June)?"
+  2. "Which product category brings in the most net revenue?"
+
+=====================================================================================
+THE FILES   (in data/challenge/ in this repo)
+=====================================================================================
+  orders\orders_2026_04.csv, _05, _06   one export per month
+  products.xlsx                         sheet "Products" (SKU, Product, Category ID,
+                                        Unit Price) and sheet "Categories"
+                                        (Category ID, Category)
+  targets.xlsx                          sheet "Targets 2026", months as columns
+  answer_key/ANSWER_KEY.txt             only to CHECK at the very end
+
+Open each file in Notepad / Excel first and write down every problem you see
+BEFORE touching Power Query. That list is your plan. (There are at least 10.)
+
+=====================================================================================
+DEFINITIONS (the business rules)
+=====================================================================================
+  Net Revenue  = Gross Amount - Discount   (no discount = 0)
+  Valid order  = Status is Delivered or Shipped. Cancelled orders don't count.
+  The shop system sometimes sends the same order twice. Count each order once.
+  Month        = month of the Order Timestamp, as Apr / May / Jun
+
+=====================================================================================
+DELIVERABLES (queries)
+=====================================================================================
+  1. Orders            one clean row per unique order, all three months, with:
+                       Store, Order ID, Order Date (date only, no time), Month,
+                       Customer First Name, Customer Last Name, Product SKU,
+                       Product, Category, Qty, Gross Amount, Discount,
+                       Net Revenue, Status. Correct types on every column.
+  2. Products          Products with the Category NAME merged in (one table).
+  3. Targets           long format: Store | Month | Target EUR
+  4. Store Performance Store x Month (9 rows): Orders, Net Revenue, Target EUR,
+                       Variance EUR, Achievement %, Status (On target / Below target)
+                       valid orders only
+  5. Category Summary  one row per category: Orders, Net Revenue (valid only),
+                       sorted from highest to lowest
+
+=====================================================================================
+RULES
+=====================================================================================
+  - Don't edit the source files. Everything happens in Power Query.
+  - Build steps on rules and positions, never on specific values from the data.
+  - Load the three months with Get Data -> From Folder (new: not 3 duplicated
+    queries). A July file dropped into the folder must work after Refresh.
+  - Every query gets readable column names and correct types (no ABC123 left).
+  - Reconcile: write down the row count after each important step.
+
+=====================================================================================
+CHECKPOINTS (allowed to look at while working)
+=====================================================================================
+  - Each orders file ends with "Rows exported: N". Your raw import of that month
+    should have N order rows before cleaning. Use it to prove nothing got lost.
+  - After cleaning: exactly 3 Stores, 3 Statuses, 10 Product SKUs (check the
+    column dropdowns / Column distribution).
+  - Every merge dialog should say "matches X of X rows" (all rows). If not, find
+    the unmatched rows with a Left Anti merge before continuing.
+  - Store Performance has 9 rows, Category Summary has 4 rows.
+  - Customer names contain ü, ä and ı. If they look like "MÃ¼ller", something is
+    wrong at the Source step.
+
+=====================================================================================
+HINTS  (only read one when you are stuck for more than 10 minutes)
+=====================================================================================
+  H1  From Folder: Combine & Transform creates helper queries. The junk rows are
+      in EVERY file, so remove them in "Transform Sample File", not afterwards.
+  H2  The Store name only appears on the first row of each block. Look for a
+      function that copies a value into the empty cells below it.
+  H3  Fill Down does nothing? It only fills null. An empty CSV cell may arrive
+      as empty text "". Replace "" with null first (Replace Values, leave the
+      "Value To Find" box empty, replace with null).
+  H4  The footer ("Rows exported", the empty line) lands in the data. Which
+      column is never empty for a real order? Filter on that rule.
+  H5  "€ 12,50", "12,50 €", "€12,50": remove the € sign (Replace Values), Trim,
+      then convert with the right locale. Which locale writes 12,50?
+  H6  Duplicates: the re-sent copy differs only in how Status is written.
+      Clean Status first, THEN remove duplicates. Order of steps matters.
+  H7  Status has spelling variants (Cancelled / Canceled). Standardise them
+      with Replace Values after fixing case and spaces.
+  H8  "Müller, Anna": Split Column by delimiter ", " and rename the two parts.
+  H9  Order Timestamp: type Date/Time, then Add Column -> Date -> Date Only
+      (or Transform to change it in place). Month: Date.ToText(..., "MMM", "en-US")
+  H10 Products: merge the Categories sheet INTO Products on Category ID, then
+      merge Products into Orders on SKU. Clean the SKU in Orders first.
+  H11 targets.xlsx has a title row, an empty row and a note at the bottom.
+      Remove Top Rows, Use First Row as Headers, then a rule-based filter for
+      the bottom. Then Unpivot Other Columns.
+  H12 Store Performance: Reference Orders, filter valid orders, Group By Store +
+      Month, then merge Targets on TWO keys. Achievement = Net / Target.
+
+=====================================================================================
+AFTER THE CHALLENGE
+=====================================================================================
+  1. Compare queries 4 and 5 with answer_key/ANSWER_KEY.txt
+  2. Write 3 sentences, as if to your manager, answering the two questions.
+  3. Power BI: load Orders, Products, Targets into Power BI as a star
+     schema, write explicit measures (Total Net Revenue, Total Target,
+     Achievement %) and build KPI cards. Same answers, but without Group By.

@@ -1,0 +1,147 @@
+Export generated 2026-02-01 by ERP system
+txn_id;dt;prd_cd;reg_cty;qty_sld;rev_eur;rep
+10001;04.01.2026; ALM-302;North - Bremen;2;55,60;Anna Schmidt
+10002;24.01.2026;ALM-302;North - Hamburg;35;973,00;Anna Schmidt
+10003;07.01.2026;ALM-101;East - Berlin;15;373,50;Sofia Rossi
+10004;08.01.2026; ALM-202;North - Hamburg;29;427,75;jonas weber
+10005;14.01.2026; ALM-302;South - Munich;22;611,60;Anna Schmidt
+10006;13.01.2026; ALM-101;West - Cologne;7;174,30;LEA FISCHER
+10007;02.01.2026;ALM-401;South - Stuttgart;30;546,00;Anna Schmidt
+10008;10.01.2026; ALM-301;East - Berlin;40;1.692,00;Anna Schmidt
+10009;22.01.2026; ALM-101;North - Bremen;15;373,50;Anna Schmidt
+10010;09.01.2026; ALM-202;South - Munich;30;442,50;jonas weber
+10011;09.01.2026;alm-302;North - Bremen;5;139,00;jonas weber
+10012;13.01.2026;alm-202;North - Hamburg;18;265,50;jonas weber
+10013;02.01.2026;ALM-401 ;North - Bremen;21;382,20;Sofia Rossi
+10014;11.01.2026;ALM-302 ;East - Berlin;14;389,20;Mehmet Yilmaz
+10015;09.01.2026;alm-102;West - Cologne;9;175,50;LEA FISCHER
+10016;19.01.2026;ALM-302 ;North - Bremen;28;778,40;Sofia Rossi
+10017;03.01.2026;ALM-202;North - Bremen;4;59,00;Mehmet Yilmaz
+10018;03.01.2026;ALM-301 ;South - Stuttgart;25;1.057,50;Sofia Rossi
+10019;18.01.2026;ALM-201;West - Cologne;1;31,00;LEA FISCHER
+10020;21.01.2026;ALM-401;North - Bremen;22;400,40;Mehmet Yilmaz
+10021;24.01.2026;alm-101;North - Hamburg;17;423,30;LEA FISCHER
+10022;21.01.2026;alm-401;North - Bremen;33;600,60;Sofia Rossi
+10023;17.01.2026; ALM-401;North - Hamburg;1;18,20;LEA FISCHER
+10024;26.01.2026;alm-401;West - Cologne;20;364,00;Anna Schmidt
+10025;24.01.2026;ALM-101;West - Cologne;32;796,80;jonas weber
+10026;22.01.2026;alm-102;West - Cologne;31;604,50;Mehmet Yilmaz
+10027;18.01.2026; ALM-102;East - Berlin;13;253,50;LEA FISCHER
+10028;17.01.2026;ALM-202;North - Hamburg;29;427,75;LEA FISCHER
+10029;19.01.2026;alm-101;North - Hamburg;36;896,40;Anna Schmidt
+10030;21.01.2026;alm-302;North - Hamburg;4;111,20;LEA FISCHER
+10031;17.01.2026; ALM-101;North - Bremen;16;398,40;Sofia Rossi
+10032;24.01.2026;ALM-102 ;South - Stuttgart;37;721,50;Mehmet Yilmaz
+10033;04.01.2026;ALM-102 ;South - Stuttgart;7;136,50;Mehmet Yilmaz
+10034;24.01.2026;ALM-401;East - Berlin;4;72,80;LEA FISCHER
+10035;28.01.2026;alm-401;West - Cologne;7;127,40;Mehmet Yilmaz
+10036;14.01.2026; ALM-102;North - Hamburg;12;234,00;Mehmet Yilmaz
+10037;28.01.2026;ALM-401;West - Cologne;36;655,20;Anna Schmidt
+10038;25.01.2026;alm-101;South - Stuttgart;16;398,40;jonas weber
+10039;13.01.2026;alm-401;South - Stuttgart;4;72,80;LEA FISCHER
+10040;26.01.2026; ALM-401;East - Berlin;30;546,00;Sofia Rossi
+10041;23.01.2026;alm-302;North - Bremen;32;889,60;Anna Schmidt
+10042;24.01.2026;ALM-301;North - Hamburg;35;1.480,50;Anna Schmidt
+10043;16.01.2026;alm-301;West - Cologne;33;1.395,90;Anna Schmidt
+10044;06.01.2026;ALM-401;North - Bremen;5;91,00;Mehmet Yilmaz
+10045;19.01.2026;ALM-101;South - Stuttgart;16;398,40;Sofia Rossi
+10046;17.01.2026; ALM-301;East - Berlin;21;888,30;LEA FISCHER
+10047;09.01.2026;alm-102;South - Munich;26;507,00;Mehmet Yilmaz
+10048;25.01.2026;ALM-201;West - Cologne;5;155,00;Anna Schmidt
+10049;18.01.2026; ALM-101;South - Munich;14;348,60;Anna Schmidt
+10050;12.01.2026;alm-102;West - Cologne;19;370,50;LEA FISCHER
+10051;26.01.2026;ALM-301;West - Cologne;34;1.438,20;LEA FISCHER
+10052;04.01.2026; ALM-302;North - Hamburg;9;250,20;Sofia Rossi
+10053;09.01.2026;alm-102;North - Bremen;19;370,50;LEA FISCHER
+10054;16.01.2026;ALM-301;South - Stuttgart;17;719,10;LEA FISCHER
+10055;01.01.2026;alm-101;South - Munich;22;547,80;jonas weber
+10056;15.01.2026;ALM-302 ;North - Hamburg;36;1.000,80;Anna Schmidt
+10057;05.01.2026;ALM-302;West - Cologne;35;973,00;Sofia Rossi
+10058;14.01.2026;ALM-102;North - Hamburg;9;175,50;LEA FISCHER
+10059;22.01.2026;ALM-102;West - Cologne;16;312,00;Mehmet Yilmaz
+10060;24.01.2026;alm-301;North - Bremen;10;423,00;Mehmet Yilmaz
+10061;06.01.2026;ALM-101 ;East - Berlin;22;547,80;jonas weber
+10062;06.01.2026;ALM-201 ;South - Stuttgart;7;217,00;jonas weber
+10063;27.01.2026; ALM-102;North - Bremen;30;585,00;jonas weber
+10064;22.01.2026;ALM-101 ;North - Hamburg;13;323,70;LEA FISCHER
+10065;21.01.2026;ALM-201 ;West - Cologne;33;1.023,00;LEA FISCHER
+10066;04.01.2026;alm-101;South - Munich;17;423,30;Anna Schmidt
+10067;20.01.2026; ALM-101;South - Munich;28;697,20;Mehmet Yilmaz
+10068;17.01.2026;ALM-301 ;North - Bremen;8;338,40;LEA FISCHER
+10069;23.01.2026;ALM-101;West - Cologne;28;697,20;jonas weber
+10070;14.01.2026; ALM-201;East - Berlin;5;155,00;Anna Schmidt
+10071;10.01.2026; ALM-302;South - Munich;33;917,40;Mehmet Yilmaz
+10072;10.01.2026;alm-302;East - Berlin;36;1.000,80;Mehmet Yilmaz
+10073;24.01.2026; ALM-302;North - Hamburg;12;333,60;LEA FISCHER
+10074;07.01.2026; ALM-201;South - Stuttgart;28;868,00;jonas weber
+10075;16.01.2026;ALM-301;East - Berlin;11;465,30;Sofia Rossi
+10076;03.01.2026; ALM-201;North - Bremen;16;496,00;jonas weber
+10077;02.01.2026;ALM-101 ;North - Hamburg;16;398,40;Mehmet Yilmaz
+10078;21.01.2026;alm-202;South - Stuttgart;37;545,75;Mehmet Yilmaz
+10079;08.01.2026;ALM-202;North - Hamburg;10;147,50;Mehmet Yilmaz
+10080;06.01.2026;ALM-102 ;North - Bremen;34;663,00;Anna Schmidt
+10081;05.01.2026; ALM-202;South - Stuttgart;30;442,50;Sofia Rossi
+10082;24.01.2026;ALM-401 ;West - Cologne;33;600,60;Mehmet Yilmaz
+10083;24.01.2026;ALM-102 ;North - Bremen;31;604,50;LEA FISCHER
+10084;25.01.2026;ALM-401 ;South - Munich;34;618,80;Mehmet Yilmaz
+10085;23.01.2026;alm-101;South - Munich;19;473,10;Sofia Rossi
+10086;05.01.2026;alm-101;North - Bremen;10;249,00;jonas weber
+10087;14.01.2026; ALM-101;South - Stuttgart;27;672,30;Anna Schmidt
+10088;27.01.2026;ALM-102 ;West - Cologne;27;526,50;Anna Schmidt
+10089;25.01.2026;ALM-401 ;South - Munich;37;673,40;LEA FISCHER
+10090;13.01.2026;alm-401;South - Munich;27;491,40;Mehmet Yilmaz
+10091;01.01.2026; ALM-202;South - Stuttgart;25;368,75;jonas weber
+10092;15.01.2026;ALM-401;West - Cologne;9;163,80;Sofia Rossi
+10093;01.01.2026;ALM-302 ;South - Stuttgart;6;166,80;jonas weber
+10094;09.01.2026; ALM-101;South - Munich;25;622,50;LEA FISCHER
+10095;13.01.2026;ALM-401 ;North - Hamburg;18;327,60;Mehmet Yilmaz
+10096;24.01.2026;ALM-101;South - Munich;35;871,50;jonas weber
+10097;03.01.2026;ALM-302;North - Bremen;3;83,40;Anna Schmidt
+10098;05.01.2026;alm-301;North - Hamburg;16;676,80;Sofia Rossi
+10099;15.01.2026; ALM-102;West - Cologne;17;331,50;Anna Schmidt
+10100;27.01.2026; ALM-401;North - Hamburg;11;200,20;LEA FISCHER
+10101;22.01.2026;ALM-301 ;North - Bremen;25;1.057,50;Anna Schmidt
+10102;23.01.2026;ALM-301;South - Munich;16;676,80;Sofia Rossi
+10103;04.01.2026;ALM-401;South - Stuttgart;37;673,40;LEA FISCHER
+10104;17.01.2026;ALM-101;South - Stuttgart;22;547,80;Anna Schmidt
+10105;12.01.2026;alm-202;East - Berlin;30;442,50;Sofia Rossi
+10106;09.01.2026;ALM-302 ;East - Berlin;40;1.112,00;Sofia Rossi
+10107;11.01.2026;ALM-201;South - Stuttgart;16;496,00;jonas weber
+10108;15.01.2026;ALM-401 ;South - Stuttgart;37;673,40;LEA FISCHER
+10109;16.01.2026; ALM-102;South - Munich;14;273,00;LEA FISCHER
+10110;23.01.2026;ALM-301;North - Bremen;18;761,40;Anna Schmidt
+10111;24.01.2026;ALM-102 ;North - Bremen;27;526,50;Mehmet Yilmaz
+10112;23.01.2026;ALM-302 ;North - Hamburg;32;889,60;LEA FISCHER
+10113;13.01.2026; ALM-102;South - Munich;16;312,00;Mehmet Yilmaz
+10114;17.01.2026;ALM-301 ;West - Cologne;23;972,90;LEA FISCHER
+10115;23.01.2026; ALM-201;North - Bremen;30;930,00;Anna Schmidt
+10116;07.01.2026;ALM-302;East - Berlin;21;583,80;jonas weber
+10117;07.01.2026; ALM-102;West - Cologne;31;604,50;Sofia Rossi
+10118;04.01.2026; ALM-201;North - Bremen;13;403,00;LEA FISCHER
+10119;23.01.2026;alm-101;North - Hamburg;35;871,50;Sofia Rossi
+10120;23.01.2026;ALM-201 ;North - Hamburg;9;279,00;Sofia Rossi
+10121;16.01.2026;ALM-201 ;North - Hamburg;31;961,00;LEA FISCHER
+10122;16.01.2026;ALM-401;North - Hamburg;8;145,60;Sofia Rossi
+10123;22.01.2026;alm-302;West - Cologne;4;111,20;LEA FISCHER
+10124;08.01.2026;ALM-101 ;West - Cologne;8;199,20;jonas weber
+10125;17.01.2026;ALM-401 ;South - Munich;25;455,00;Sofia Rossi
+10126;10.01.2026;ALM-202;East - Berlin;37;545,75;Anna Schmidt
+10127;07.01.2026; ALM-401;North - Bremen;14;254,80;jonas weber
+10128;18.01.2026;alm-102;South - Stuttgart;;97,50;Sofia Rossi
+10129;10.01.2026;alm-202;South - Munich;3;44,25;Mehmet Yilmaz
+10130;22.01.2026; ALM-101;East - Berlin;15;373,50;Sofia Rossi
+10131;26.01.2026;ALM-302 ;North - Bremen;13;361,40;jonas weber
+10132;27.01.2026;ALM-201;South - Munich;10;310,00;Sofia Rossi
+10133;27.01.2026; ALM-302;South - Stuttgart;37;1.028,60;LEA FISCHER
+10134;13.01.2026;ALM-302 ;West - Cologne;18;500,40;Anna Schmidt
+10135;24.01.2026; ALM-202;North - Bremen;;309,75;Sofia Rossi
+10136;01.01.2026;ALM-301;North - Bremen;18;761,40;Mehmet Yilmaz
+10137;21.01.2026; ALM-301;West - Cologne;29;1.226,70;Mehmet Yilmaz
+10138;27.01.2026;ALM-302;South - Stuttgart;32;889,60;LEA FISCHER
+10139;22.01.2026;alm-201;East - Berlin;7;217,00;Mehmet Yilmaz
+10140;22.01.2026;ALM-201;South - Munich;26;806,00;LEA FISCHER
+10083;24.01.2026;ALM-102 ;North - Bremen;31;604,50;LEA FISCHER
+10030;21.01.2026;alm-302;North - Hamburg;4;111,20;LEA FISCHER
+10104;17.01.2026;ALM-101;South - Stuttgart;22;547,80;Anna Schmidt
+10132;27.01.2026;ALM-201;South - Munich;10;310,00;Sofia Rossi
+;;TOTAL;;;;

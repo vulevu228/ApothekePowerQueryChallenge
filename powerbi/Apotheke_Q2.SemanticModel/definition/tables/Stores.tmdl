@@ -1,0 +1,17 @@
+table Stores
+	lineageTag: 7efde89b-5d38-4253-bfbd-ffe328603f7d
+
+	column Store
+		lineageTag: 6b8cb0f8-453f-4a82-9808-831784b15594
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Targets[Store]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Stores = calculated
+		mode: import
+		source = DISTINCT ( Targets[Store] )
+
+	annotation PBI_Id = 76bff938b3084fbbb207e25aeeed2869
+

@@ -1,0 +1,137 @@
+Apotheke am Hafen - Online Orders Export
+Period: May 2026
+Store,Order ID,Order Timestamp,Customer,Product SKU,Qty,Gross Amount,Discount,Status
+Altona,50135,2026-05-01 17:23:09,"Wolf, Lukas", SKU-0031,1,"8,40 €","0,84",delivered
+,50136,2026-05-18 21:46:15,"Krüger, Jonas",SKU-0032 ,2,"€29,80",,DELIVERED
+,50137,2026-05-07 12:05:06,"Schäfer, Lea",SKU-0012 ,2,"6,98 €",,cancelled
+,50137,2026-05-07 12:05:06,"Schäfer, Lea",SKU-0012 ,2,"6,98 €",,CANCELED
+,50138,2026-05-21 15:42:01,"Yılmaz, Jonas", SKU-0012,4,"€13,96",,shipped
+,50139,2026-05-23 19:11:04,"Müller, Hannah",sku-0011,3,"20,85 €",,delivered
+,50140,2026-05-25 09:17:54,"Yılmaz, Mia",sku-0042,4,"€42,00",,Delivered
+,50141,2026-05-16 09:23:06,"Schmidt, Mia",SKU-0031 ,1,"€ 8,40",,Delivered
+,50142,2026-05-14 15:20:52,"Krüger, Mia",sku-0043,1,"5,95 €",,delivered
+,50143,2026-05-05 16:54:12,"Krüger, Lea",SKU-0042 ,3,"€31,50","4,72",DELIVERED
+,50144,2026-05-24 18:37:47,"Koch, Lukas",sku-0022,1,"€ 9,90",,Delivered
+,50145,2026-05-24 15:44:14,"Yılmaz, Lea",SKU-0042 ,4,"€42,00",,Delivered
+,50146,2026-05-27 15:22:57,"Schmidt, Felix",SKU-0023,1,"€ 7,25","1,45",Cancelled
+,50147,2026-05-25 13:58:45,"Hoffmann, Paul",SKU-0031 ,4,"33,60 €",,delivered
+,50148,2026-05-24 07:14:06,"Becker, Sofia",SKU-0011,4,"€27,80",, Shipped
+,50149,2026-05-31 10:55:37,"Müller, Paul",SKU-0031 ,2,"€16,80",,delivered
+,50150,2026-05-26 08:55:52,"Schäfer, Emma",SKU-0031,2,"€16,80",,Delivered 
+,50151,2026-05-11 15:13:12,"Müller, Mehmet",sku-0043,1,"€ 5,95",,shipped
+,50152,2026-05-03 16:47:06,"Wolf, Paul",SKU-0032,1,"€14,90",,DELIVERED
+,50153,2026-05-13 20:54:16,"Yılmaz, Lea",sku-0041,2,"25,98 €",,delivered
+,50154,2026-05-26 12:29:55,"Schäfer, Hannah", SKU-0011,1,"€ 6,95",,Delivered
+,50155,2026-05-13 08:59:09,"Schäfer, Mehmet",SKU-0042,2,"21,00 €","2,10",delivered
+,50156,2026-05-17 19:48:16,"Krüger, Felix", SKU-0031,2,"€ 16,80","3,36",delivered
+,50157,2026-05-23 08:43:26,"Yılmaz, Paul", SKU-0023,1,"€ 7,25",,Delivered
+,50158,2026-05-10 17:03:15,"Yılmaz, Ali", SKU-0032,3,"€ 44,70","6,71",Delivered 
+,50159,2026-05-16 21:01:28,"Krüger, Hannah",SKU-0012 ,1,"3,49 €","0,35",DELIVERED
+,50160,2026-05-04 13:46:50,"Koch, Ali",SKU-0041 ,2,"€ 25,98",,DELIVERED
+,50161,2026-05-28 09:07:20,"Müller, Mia",SKU-0042,2,"€ 21,00",,Delivered
+,50162,2026-05-26 21:40:13,"Becker, Hannah",sku-0021,4,"€19,20","2,88",Delivered
+,50163,2026-05-20 08:27:35,"Koch, Felix", SKU-0021,3,"€14,40","2,16",Delivered 
+,50164,2026-05-24 19:12:22,"Hoffmann, Emma",SKU-0031 ,1,"€8,40","0,84",DELIVERED
+,50165,2026-05-17 20:50:21,"Yılmaz, Ali", SKU-0012,3,"€10,47",,delivered
+,50166,2026-05-22 21:40:01,"Koch, Jonas",sku-0012,1,"€3,49",,Canceled
+,50167,2026-05-07 08:52:45,"Schäfer, Emma",sku-0041,2,"€ 25,98","5,20",CANCELED
+,50168,2026-05-31 16:49:05,"Weber, Felix",SKU-0023 ,2,"€14,50","2,17",cancelled
+,50168,2026-05-31 16:49:05,"Weber, Felix",SKU-0023 ,2,"€14,50","2,17",Cancelled
+,50169,2026-05-07 08:10:15,"Yılmaz, Felix", SKU-0022,1,"€ 9,90","1,49",Delivered 
+,50170,2026-05-02 17:56:01,"Wolf, Ali",SKU-0012,4,"€13,96","2,79",delivered
+,50171,2026-05-15 17:48:36,"Koch, Mia", SKU-0011,1,"€6,95","1,04",DELIVERED
+,50172,2026-05-12 21:14:58,"Schmidt, Ali",sku-0042,1,"€ 10,50",, Shipped
+,50173,2026-05-14 09:54:24,"Schmidt, Anna",sku-0011,2,"€ 13,90",,Delivered 
+,50174,2026-05-02 17:35:47,"Schmidt, Ali",SKU-0021,2,"9,60 €","0,96",Delivered 
+,50175,2026-05-26 18:40:51,"Schäfer, Anna",SKU-0032 ,1,"€ 14,90","1,49",delivered
+,50176,2026-05-30 19:51:12,"Krüger, Sofia", SKU-0043,3,"€17,85",,DELIVERED
+,50177,2026-05-07 17:31:33,"Yılmaz, Sofia",sku-0043,4,"€ 23,80",,Delivered 
+Eimsbüttel,50178,2026-05-14 20:01:13,"Weber, Ali",sku-0012,2,"€ 6,98",,CANCELED
+,50179,2026-05-31 16:32:01,"Weber, Mia",SKU-0042 ,3,"31,50 €",,DELIVERED
+,50180,2026-05-11 16:31:03,"Müller, Hannah",SKU-0012 ,3,"€ 10,47",,shipped
+,50181,2026-05-05 19:56:48,"Yılmaz, Mia", SKU-0012,4,"€13,96",,DELIVERED
+,50182,2026-05-08 20:51:58,"Becker, Emma",SKU-0021 ,1,"4,80 €",,CANCELED
+,50183,2026-05-07 18:12:21,"Becker, Jonas",SKU-0032 ,1,"€ 14,90",,delivered
+,50184,2026-05-17 18:47:51,"Krüger, Lea", SKU-0011,2,"€ 13,90",,delivered
+,50185,2026-05-24 21:59:16,"Weber, Lukas", SKU-0011,4,"27,80 €",,Delivered
+,50186,2026-05-08 21:03:00,"Koch, Hannah",SKU-0012,4,"13,96 €",,shipped
+,50187,2026-05-18 22:32:09,"Yılmaz, Jonas",SKU-0021 ,4,"€19,20",,Delivered
+,50188,2026-05-15 18:22:03,"Wolf, Paul",SKU-0021,1,"€ 4,80",,delivered
+,50189,2026-05-11 13:07:47,"Krüger, Lukas",sku-0031,3,"25,20 €","2,52",Delivered
+,50190,2026-05-02 07:30:46,"Krüger, Paul",sku-0012,4,"€13,96",,delivered
+,50191,2026-05-03 14:11:57,"Müller, Hannah",sku-0023,4,"€29,00",,Delivered
+,50192,2026-05-10 17:52:51,"Wolf, Anna",SKU-0012,2,"6,98 €",,Delivered 
+,50193,2026-05-14 10:40:43,"Weber, Hannah",SKU-0031 ,1,"€8,40","1,68",Canceled
+,50194,2026-05-27 22:03:50,"Weber, Emma",SKU-0031,2,"€ 16,80",,Delivered
+,50195,2026-05-06 09:49:19,"Weber, Lea", SKU-0011,4,"€ 27,80",,Delivered
+,50196,2026-05-17 16:36:13,"Müller, Hannah",SKU-0023,2,"€14,50","2,90",shipped
+,50197,2026-05-06 18:37:15,"Krüger, Ali", SKU-0012,3,"10,47 €","1,57",Delivered 
+,50198,2026-05-25 18:53:10,"Yılmaz, Lea",SKU-0042 ,1,"10,50 €","2,10",Delivered 
+,50199,2026-05-12 17:45:07,"Weber, Lukas",SKU-0042,4,"€42,00",,Delivered
+,50200,2026-05-14 15:01:07,"Schäfer, Jonas",SKU-0023 ,3,"21,75 €",,Delivered 
+,50201,2026-05-02 11:02:28,"Hoffmann, Paul",SKU-0023 ,4,"€29,00",,Delivered
+,50201,2026-05-02 11:02:28,"Hoffmann, Paul",SKU-0023 ,4,"€29,00",,DELIVERED
+,50202,2026-05-03 14:44:55,"Schäfer, Mehmet",SKU-0032,1,"€14,90",,delivered
+,50203,2026-05-18 18:09:59,"Müller, Jonas",SKU-0041 ,3,"38,97 €","5,85",delivered
+,50204,2026-05-01 11:22:47,"Koch, Lukas",SKU-0042,4,"€ 42,00",,Delivered
+,50205,2026-05-17 09:24:55,"Wolf, Sofia",SKU-0022,4,"39,60 €","3,96",DELIVERED
+,50205,2026-05-17 09:24:55,"Wolf, Sofia",SKU-0022,4,"39,60 €","3,96",Delivered 
+,50206,2026-05-08 10:22:52,"Schmidt, Lea", SKU-0023,2,"€ 14,50",,Delivered
+,50207,2026-05-16 18:24:25,"Becker, Hannah",SKU-0023,1,"€ 7,25",,Delivered
+,50208,2026-05-18 11:48:53,"Wolf, Sofia",sku-0032,3,"44,70 €","4,47", Shipped
+,50209,2026-05-20 16:21:26,"Koch, Felix", SKU-0023,1,"€7,25",,Delivered
+,50210,2026-05-20 16:57:58,"Weber, Lukas",SKU-0031,2,"16,80 €",,Delivered 
+,50211,2026-05-30 07:39:15,"Krüger, Anna",sku-0041,4,"€51,96",,shipped
+,50212,2026-05-25 19:13:04,"Koch, Jonas",SKU-0022 ,3,"€29,70",,delivered
+,50213,2026-05-06 07:36:07,"Wolf, Lea", SKU-0012,2,"€6,98","0,70",Canceled
+,50214,2026-05-24 12:17:59,"Krüger, Paul",SKU-0042,4,"€ 42,00",,Cancelled
+,50215,2026-05-09 16:55:38,"Yılmaz, Mehmet",SKU-0012,4,"€13,96","1,40",DELIVERED
+,50216,2026-05-26 19:34:26,"Müller, Paul",sku-0012,3,"€10,47",,Delivered
+,50217,2026-05-05 21:01:03,"Müller, Mehmet",SKU-0042 ,2,"€21,00",,cancelled
+Wandsbek,50218,2026-05-31 09:43:34,"Krüger, Ali",sku-0022,4,"€ 39,60",,delivered
+,50219,2026-05-12 16:11:55,"Becker, Sofia",SKU-0021 ,3,"€ 14,40",,delivered
+,50220,2026-05-31 22:22:15,"Becker, Anna",SKU-0011,2,"€13,90","2,78",Delivered
+,50221,2026-05-03 14:29:13,"Hoffmann, Jonas",sku-0042,4,"42,00 €",,delivered
+,50222,2026-05-12 11:34:04,"Wolf, Sofia",sku-0021,1,"€ 4,80",,Delivered
+,50223,2026-05-12 10:53:52,"Müller, Lea",SKU-0031 ,1,"€ 8,40",,Delivered 
+,50224,2026-05-31 12:24:39,"Krüger, Mia",sku-0011,1,"€ 6,95",,Delivered 
+,50225,2026-05-09 20:43:06,"Krüger, Anna",sku-0032,1,"14,90 €",,Delivered 
+,50226,2026-05-18 22:41:00,"Koch, Paul",SKU-0021 ,3,"€14,40","2,88",delivered
+,50227,2026-05-23 13:07:40,"Weber, Mia", SKU-0042,2,"€21,00","2,10",DELIVERED
+,50228,2026-05-02 17:02:03,"Koch, Mehmet",SKU-0042 ,4,"€ 42,00",,DELIVERED
+,50229,2026-05-24 15:18:31,"Müller, Mia",SKU-0022 ,3,"€29,70",,delivered
+,50230,2026-05-18 11:38:57,"Müller, Ali", SKU-0022,4,"€ 39,60",,Delivered 
+,50231,2026-05-11 15:03:40,"Weber, Felix",SKU-0011,3,"€20,85",,Delivered 
+,50232,2026-05-02 19:53:24,"Schmidt, Lukas",SKU-0043 ,3,"€ 17,85",,Delivered
+,50233,2026-05-08 15:47:47,"Wolf, Sofia",sku-0042,4,"€ 42,00",,delivered
+,50234,2026-05-15 17:01:12,"Becker, Lea", SKU-0032,3,"44,70 €",,Delivered 
+,50235,2026-05-25 19:07:40,"Müller, Jonas", SKU-0012,2,"6,98 €",,shipped
+,50236,2026-05-16 19:19:15,"Koch, Jonas", SKU-0041,1,"€12,99",,cancelled
+,50237,2026-05-20 21:58:44,"Müller, Paul",SKU-0032,1,"€ 14,90","2,98",Delivered
+,50238,2026-05-11 11:08:58,"Koch, Sofia",SKU-0023 ,2,"€14,50",,Delivered 
+,50239,2026-05-16 15:17:54,"Weber, Lea",SKU-0012 ,2,"6,98 €",,Delivered
+,50239,2026-05-16 15:17:54,"Weber, Lea",SKU-0012 ,2,"6,98 €",,Delivered 
+,50240,2026-05-02 19:11:14,"Weber, Mehmet",SKU-0043 ,4,"€23,80","2,38",DELIVERED
+,50241,2026-05-24 08:18:33,"Weber, Hannah",sku-0032,2,"€29,80",,Delivered
+,50242,2026-05-15 20:28:45,"Müller, Lea", SKU-0031,4,"€ 33,60","5,04",DELIVERED
+,50243,2026-05-20 11:58:55,"Yılmaz, Mia",sku-0043,2,"€ 11,90",,Shipped
+,50244,2026-05-27 09:08:53,"Schäfer, Lea",sku-0042,1,"10,50 €","1,57",Delivered
+,50245,2026-05-24 07:18:41,"Weber, Anna",SKU-0021,2,"€ 9,60","0,96",Delivered 
+,50246,2026-05-21 11:01:27,"Becker, Hannah", SKU-0032,1,"€ 14,90",,delivered
+,50247,2026-05-27 13:22:52,"Hoffmann, Hannah",SKU-0043,4,"€ 23,80",,Delivered
+,50248,2026-05-23 10:45:39,"Yılmaz, Lukas",sku-0012,2,"€6,98","0,70",DELIVERED
+,50249,2026-05-15 10:26:09,"Weber, Paul", SKU-0031,4,"€33,60","5,04",Cancelled
+,50250,2026-05-19 14:22:40,"Koch, Lea",SKU-0021 ,4,"€ 19,20","3,84",Shipped
+,50251,2026-05-18 18:03:44,"Krüger, Jonas",SKU-0042 ,3,"31,50 €",,DELIVERED
+,50252,2026-05-27 15:58:28,"Becker, Paul",sku-0012,4,"13,96 €","1,40",DELIVERED
+,50253,2026-05-30 08:39:47,"Krüger, Paul",SKU-0042,4,"€42,00",,delivered
+,50254,2026-05-11 17:02:09,"Weber, Ali",SKU-0032,1,"€14,90","1,49",delivered
+,50255,2026-05-27 21:47:34,"Wolf, Ali",SKU-0041 ,3,"€ 38,97","5,85",Canceled
+,50256,2026-05-12 14:25:07,"Hoffmann, Emma", SKU-0041,4,"€51,96",,DELIVERED
+,50257,2026-05-08 18:46:41,"Müller, Lukas", SKU-0021,3,"14,40 €",,Delivered
+,50258,2026-05-23 19:23:52,"Becker, Felix",SKU-0023 ,3,"21,75 €",,Delivered 
+,50259,2026-05-15 17:38:56,"Koch, Ali",SKU-0032 ,3,"€44,70",,DELIVERED
+,50259,2026-05-15 17:38:56,"Koch, Ali",SKU-0032 ,3,"€44,70",,Delivered 
+,50260,2026-05-20 16:54:31,"Yılmaz, Lukas",sku-0041,4,"€51,96",,delivered
+
+Rows exported: 132
